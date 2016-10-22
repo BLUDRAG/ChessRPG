@@ -31,7 +31,8 @@ public class ShaderInspector : ScriptInspector
 
 	public override void OnInspectorGUI()
 	{
-		EditorGUIUtility.LookLikeControls();
+        EditorGUIUtility.labelWidth = 0f;
+        EditorGUIUtility.fieldWidth = 0f;
 		EditorGUI.indentLevel = 0;
 
 		var rc = GUILayoutUtility.GetRect(1f, 13f);
@@ -92,13 +93,15 @@ public class ShaderInspector : ScriptInspector
 			inspectorTitlebarText = "IN TitleText";
 		} 
 
-		EditorGUIUtility.LookLikeControls(Screen.width, 0f);
+        EditorGUIUtility.labelWidth = Screen.width;
+        EditorGUIUtility.fieldWidth = 0f;  
 		foldout = EditorGUI.Foldout(position, foldout, GUIContent.none, true, inspectorTitlebar);
 		
 		position = inspectorTitlebar.padding.Remove(position);
 		if (Event.current.type == EventType.Repaint)
 			inspectorTitlebarText.Draw(position, "Shader Info", false, false, foldout, false);
-		EditorGUIUtility.LookLikeControls();
+        EditorGUIUtility.labelWidth = 0f;
+        EditorGUIUtility.fieldWidth = 0f;
 		
 		return foldout;
 	}
