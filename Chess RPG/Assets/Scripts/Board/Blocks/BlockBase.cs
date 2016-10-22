@@ -9,7 +9,7 @@ namespace Gamify
 	/// should be used in other classes not derived from
 	/// BlockBase. 
 	/// </summary>
-	public abstract class BlockBase : MonoBehaviour {
+	public abstract class BlockBase {
 		
 		/// <summary>
 		/// Handles events when this block is highlighted.
