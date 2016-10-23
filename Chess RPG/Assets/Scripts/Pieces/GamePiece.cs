@@ -18,5 +18,10 @@ namespace Gamify
 		/// this reference.
 		/// </summary>
 		public PieceBase Piece;
+		
+		void Start()
+		{
+			
+		}
 	}
 }

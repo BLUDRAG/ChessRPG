@@ -40,12 +40,20 @@ namespace Gamify
 		// Contains all types of pieces in the game.
 		public enum PieceType
 		{
+			Empty,
 			Pawn,
 			Knight,
 			Bishop,
 			Rook,
 			Queen,
 			King
+		}
+		
+		// Contains all possible piece colours.
+		public enum PieceColour
+		{
+			White,
+			Black
 		}
 	}
 }
