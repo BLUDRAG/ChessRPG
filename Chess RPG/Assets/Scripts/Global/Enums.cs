@@ -36,5 +36,16 @@ namespace Gamify
 			G = 7,
 			H = 8
 		}
+		
+		// Contains all types of pieces in the game.
+		public enum PieceType
+		{
+			Pawn,
+			Knight,
+			Bishop,
+			Rook,
+			Queen,
+			King
+		}
 	}
 }

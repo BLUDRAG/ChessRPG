@@ -45,8 +45,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Utilities\EventManager.cs" />
+     <Compile Include="Assets\Scripts\Board\Blocks\BlockBase.cs" />
+     <Compile Include="Assets\Scripts\Board\Blocks\GameBlock.cs" />
+     <Compile Include="Assets\Scripts\Board\Blocks\NormalBlock.cs" />
+     <Compile Include="Assets\Scripts\Board\Board.cs" />
+     <Compile Include="Assets\Scripts\Global\Enums.cs" />
+     <Compile Include="Assets\Scripts\Global\EventManager.cs" />
+     <Compile Include="Assets\Scripts\Pieces\PieceBase.cs" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\namespace.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\log.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\case.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\do.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\_readme.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\enum.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\else.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\base.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\get.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\EditorResources\Fonts\SourceCodePro-Legal.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\if.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\struct.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\for.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\catch.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\class.txt" />
      <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\foreach.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\interface.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\switch.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\finally.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\try.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\while.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\nn.txt" />
+     <None Include="Assets\Plugins\Editor\ScriptInspector3\CodeSnippets\set.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
