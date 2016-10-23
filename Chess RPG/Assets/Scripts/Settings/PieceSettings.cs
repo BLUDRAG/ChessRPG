@@ -15,6 +15,7 @@ namespace Gamify
 		/// <summary>
 		/// A list of all pieces defined for this setting.
 		/// </summary>
+		[HideInInspector]
 		public List<PieceSettingsWrapper> Pieces = new List<PieceSettingsWrapper>()
 		{
 			new PieceSettingsWrapper(Enums.PieceType.King, Enums.PieceColour.White, Enums.Files.A, Enums.Ranks._5),
