@@ -10,7 +10,12 @@ namespace Gamify
 	/// PieceBase. 
 	/// </summary>
 	public abstract class PieceBase {
-	
+		
+		/// <summary>
+		/// The base type of this piece.
+		/// </summary>
+		public Enums.PieceType PieceType;
+		
 		/// <summary>
 		/// Handles events when this piece is highlighted.
 		/// </summary>

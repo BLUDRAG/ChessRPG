@@ -12,6 +12,16 @@ namespace Gamify
 	public abstract class BlockBase {
 		
 		/// <summary>
+		/// The file this Block occupies.
+		/// </summary>
+		public Enums.Files File;
+		
+		/// <summary>
+		/// The rank this Block occupies.
+		/// </summary>
+		public Enums.Ranks Rank;
+		
+		/// <summary>
 		/// Handles events when this block is highlighted.
 		/// </summary>
 		public abstract void OnHighlight(GameObject block);
