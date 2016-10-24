@@ -55,5 +55,12 @@ namespace Gamify
 			White,
 			Black
 		}
+		
+		// Contains all possible block colours.
+		public enum BlockColour
+		{
+			White,
+			Black
+		}
 	}
 }

@@ -37,6 +37,7 @@ namespace Gamify
 			foreach(PieceSettingsWrapper piece in ActiveSettings.Pieces)
 			{
 				GamePiece newPiece = (GamePiece)Instantiate(PiecePrefab, new Vector3(x, 1.01f, -7f), Quaternion.identity);
+				newPiece.gameObject.name = piece.Colour.ToString() + " " + piece.Type.ToString() + " " + piece.File.ToString() + piece.Rank.ToString();
 				newPiece.Title.text = piece.Type.ToString();
 				
 				x += 2f;

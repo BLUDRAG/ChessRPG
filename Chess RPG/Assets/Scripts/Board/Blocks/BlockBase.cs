@@ -12,6 +12,11 @@ namespace Gamify
 	public abstract class BlockBase {
 		
 		/// <summary>
+		/// The colour this Block possesses.
+		/// </summary>
+		public Enums.BlockColour Colour;
+		
+		/// <summary>
 		/// The file this Block occupies.
 		/// </summary>
 		public Enums.Files File;
