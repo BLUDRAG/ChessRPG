@@ -19,17 +19,30 @@ namespace Gamify
 		/// </summary>
 		public BlockBase Block;
 		
-		void Start()
-		{
-			Block = new NormalBlock();
-		}
+		/// Temporary?
+		public Material BlockMaterial;
+		/// Temporary?
 		
-		public void OnMouseUp()
+		/// <summary>
+		/// Sets up all in-game settings for this block
+		/// </summary>
+		public void PrepareBlock()
 		{
-			if(Block != null)
+			/// Temporary?
+			Color blockColour = Color.white;
+			
+			switch(Block.Colour)
 			{
-				Block.OnSelected(gameObject);
+			case Enums.BlockColour.Black:
+				blockColour = Color.black;
+				break;
 			}
+			
+			BlockMaterial = GetComponent<MeshRenderer>().material;
+			BlockMaterial.SetColor("_Color", blockColour);
+			
+			transform.localPosition = new Vector3(((int)Block.File - 1) * 2f, 0.5f, ((int)Block.Rank - 1) * 2f);
+			/// Temporary?
 		}
 	}
 }
