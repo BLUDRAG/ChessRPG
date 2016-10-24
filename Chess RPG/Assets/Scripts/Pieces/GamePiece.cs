@@ -19,9 +19,16 @@ namespace Gamify
 		/// </summary>
 		public PieceBase Piece;
 		
-		void Start()
+		/// Temporary
+		public TextMesh Title;
+		/// Temporary
+		
+		/// <summary>
+		/// Sets up all in-game settings for this piece
+		/// </summary>
+		public void PreparePiece()
 		{
-			
+			Title.text = Piece.PieceType.ToString();
 		}
 	}
 }
