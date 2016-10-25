@@ -41,7 +41,7 @@ namespace Gamify
 			BlockMaterial = GetComponent<MeshRenderer>().material;
 			BlockMaterial.SetColor("_Color", blockColour);
 			
-			transform.localPosition = new Vector3(((int)Block.File - 1) * 2f, 0.5f, ((int)Block.Rank - 1) * 2f);
+			transform.localPosition = new Vector3(((int)Block.Rank - 1) * 2f, 0.5f, ((int)Block.File - 1) * 2f);
 			/// Temporary?
 		}
 	}

@@ -19,6 +19,11 @@ namespace Gamify
 		/// </summary>
 		public GamePiece PiecePrefab;
 		
+		/// <summary>
+		/// The piece container object.
+		/// </summary>
+		public Transform PieceContainer;
+		
 		void Start()
 		{
 			// Temporary
@@ -33,14 +38,17 @@ namespace Gamify
 		public void GeneratePieces()
 		{
 			// Temporary
-			float x = -7f;
 			foreach(PieceSettingsWrapper piece in ActiveSettings.Pieces)
 			{
-				GamePiece newPiece = (GamePiece)Instantiate(PiecePrefab, new Vector3(x, 1.01f, -7f), Quaternion.identity);
+				GamePiece newPiece = (GamePiece)Instantiate(PiecePrefab, Vector3.zero, Quaternion.identity);
+				newPiece.transform.SetParent(PieceContainer, false);
+				
+				// TODO We'll need a way to select a piece type for each setting
 				newPiece.gameObject.name = piece.Colour.ToString() + " " + piece.Type.ToString() + " " + piece.File.ToString() + piece.Rank.ToString();
 				newPiece.Title.text = piece.Type.ToString();
+				newPiece.transform.localPosition = new Vector3(((int)piece.Rank - 1) * 2f, 0.6f, ((int)piece.File - 1) * 2f);
+				//newPiece.PreparePiece();
 				
-				x += 2f;
 			}
 			// Temporary
 		}
