@@ -38,6 +38,17 @@ namespace Gamify
 			Dictionary<Enums.Files, List<BlockSettingsWrapper>> orderedBoardArrangement = new Dictionary<Gamify.Enums.Files, List<Gamify.BlockSettingsWrapper>>();
 			Array fileTypes = Enum.GetValues(typeof(Enums.Files));
 			
+			EditorGUILayout.BeginHorizontal();
+			
+			GUILayout.Label("");
+			
+			foreach(Enums.Ranks rank in Enum.GetValues(typeof(Enums.Ranks)))
+			{ 
+				GUILayout.Label(((int)rank).ToString(), EditorStyles.centeredGreyMiniLabel);
+			}
+			
+			EditorGUILayout.EndHorizontal();
+			
 			foreach(Enums.Files file in fileTypes)
 			{ 
 				orderedBoardArrangement[file] = new List<Gamify.BlockSettingsWrapper>();
@@ -53,14 +64,10 @@ namespace Gamify
 				
 				EditorGUILayout.BeginHorizontal();
 				
-				GUILayout.Label(currentType.ToString());
+				GUILayout.Label(currentType.ToString(), EditorStyles.centeredGreyMiniLabel);
 				
 				foreach(BlockSettingsWrapper block in filteredFile)
 				{
-					EditorGUI.BeginChangeCheck();
-					
-					
-					
 					GUIStyle blockStyle = new GUIStyle(GUI.skin.button);
 					
 					switch(block.Colour)
@@ -75,55 +82,35 @@ namespace Gamify
 					
 					if(GUILayout.Button("", blockStyle))
 					{
-						string[] options = new string[]{"A", "B"};
+						GenericMenu menu = new GenericMenu();
 						
-						EditorGUILayout.Popup(0, options);
-					}
-					
-					if(EditorGUI.EndChangeCheck())
-					{
+						Hashtable selectWhite = new Hashtable();
+						selectWhite["Colour"] = Enums.BlockColour.White;
+						selectWhite["Block"] = block;
 						
+						menu.AddItem(new GUIContent("Colour/White"), false, SetColourCallback, selectWhite);
+						
+						Hashtable selectBlack = new Hashtable();
+						selectBlack["Colour"] = Enums.BlockColour.Black;
+						selectBlack["Block"] = block;
+						
+						menu.AddItem(new GUIContent("Colour/Black"), false, SetColourCallback, selectBlack);
+						
+						menu.ShowAsContext();
 					}
 				}
 				
 				EditorGUILayout.EndHorizontal();
-			}
+			}						
+		}
+		
+		public void SetColourCallback(object data)
+		{
+			Hashtable selectedColour = (Hashtable)data;
 			
-			//foreach(BlockSettingsWrapper block in _settings.Blocks.FindAll(block => block.File == file))
-			//{										
-			//	EditorGUI.BeginChangeCheck();
-				
-			//	EditorGUILayout.BeginHorizontal();
-				
-			//	Enums.BlockColour newColour = (Enums.BlockColour)EditorGUILayout.EnumPopup(block.Colour);
-			//	Enums.Files newFile = (Enums.Files)EditorGUILayout.EnumPopup(block.File);
-			//	Enums.Ranks newRank = (Enums.Ranks)EditorGUILayout.EnumPopup(block.Rank);
-				
-			//	if(GUILayout.Button("Remove"))
-			//	{
-			//		_settings.Blocks.Remove(block);
-					
-			//		EditorUtility.SetDirty(_settings);
-			//	}
-				
-			//	EditorGUILayout.EndHorizontal();
-				
-			//	if(EditorGUI.EndChangeCheck())
-			//	{
-			//		block.Colour = newColour;
-			//		block.File = newFile;
-			//		block.Rank = newRank;
-			//	}
-				
-			//	EditorUtility.SetDirty(_settings);
-			//}
+			((BlockSettingsWrapper)selectedColour["Block"]).Colour = ((Enums.BlockColour)selectedColour["Colour"]);
 			
-			//if(GUILayout.Button("Add Block To " + file.ToString() + " File"))
-			//{
-			//	_settings.Blocks.Add(new BlockSettingsWrapper(Enums.BlockColour.White, file, Enums.Ranks._1));
-				
-			//	EditorUtility.SetDirty(_settings);
-			//}
+			EditorUtility.SetDirty(_settings);
 		}
 		
 		public List<BlockSettingsWrapper> GetDefaultFile(Enums.Files file)
