@@ -2,6 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Gamify
 {
 	/// <summary>
@@ -11,6 +15,14 @@ namespace Gamify
 	/// </summary>
 	[CreateAssetMenu]
 	public class PieceSettings : ScriptableObject {
+		
+		#if UNITY_EDITOR
+		[MenuItem("Assets/Gamify/Settings/Piece Settings")]
+		public static PieceSettings CreateSettings()
+		{
+			return EditorUtil.CreateAsset<PieceSettings>();
+		}
+        #endif
 		
 		/// <summary>
 		/// A list of all pieces defined for this setting.

@@ -39,7 +39,8 @@ namespace Gamify
                 GUILayout.Label("Piece", EditorStyles.boldLabel);
                 GUILayout.Label("Colour", EditorStyles.boldLabel);
                 GUILayout.Label("File", EditorStyles.boldLabel);
-                GUILayout.Label("Rank", EditorStyles.boldLabel);
+	            GUILayout.Label("Rank", EditorStyles.boldLabel);
+	            GUILayout.Label("", EditorStyles.boldLabel);
             
                 EditorGUILayout.EndHorizontal();
 

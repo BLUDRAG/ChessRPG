@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Gamify
 {
@@ -9,9 +16,16 @@ namespace Gamify
 	/// Instances of this class should contain all the different
 	/// available board settings.
 	/// </summary>
-	[CreateAssetMenu]
 	public class BoardSettings : ScriptableObject {
 	
+        #if UNITY_EDITOR
+		[MenuItem("Assets/Gamify/Settings/Board Settings")]
+        public static BoardSettings CreateSettings()
+        {
+            return EditorUtil.CreateAsset<BoardSettings>();
+        }
+        #endif
+
 		/// <summary>
 		/// A list of all blocks defined for this setting.
 		/// </summary>
