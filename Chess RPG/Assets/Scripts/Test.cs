@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+namespace Gamify
+{
 public class Test : MonoBehaviour {
 
 	// Use this for initialization
@@ -12,4 +14,5 @@ public class Test : MonoBehaviour {
 	void Update () {
 	
 	}
+}
 }
