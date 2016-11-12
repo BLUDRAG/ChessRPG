@@ -8,6 +8,11 @@ namespace Gamify
 	/// </summary>
 	public class Pawn : PieceBase {
 		
+		public Pawn()
+		{
+			PieceType = Enums.PieceType.Pawn;
+		}
+		
 		/// <summary>
 		/// Handles events when this piece is highlighted.
 		/// </summary>

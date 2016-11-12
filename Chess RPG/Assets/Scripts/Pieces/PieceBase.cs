@@ -17,6 +17,11 @@ namespace Gamify
 		public Enums.PieceType PieceType;
 		
 		/// <summary>
+		/// The colour this piece possesses.
+		/// </summary>
+		public Enums.PieceColour PieceColour;
+		
+		/// <summary>
 		/// Handles events when this piece is highlighted.
 		/// </summary>
 		public abstract void OnHighlight(GameObject piece);
