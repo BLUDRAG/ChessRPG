@@ -28,7 +28,7 @@ namespace Gamify
 		/// <summary>
 		/// A list of all piece models in the project.
 		/// </summary>
-		public GameObject[] PieceModels;
+		public ModelPieceContainer PieceModels;
 		
 		/// <summary>
 		/// The piece container object.
@@ -65,7 +65,7 @@ namespace Gamify
 					break;
 				}
 				
-				newPiece.Model = (GameObject)Instantiate(PieceModels[((int)piece.Type)], Vector3.zero, Quaternion.identity);
+				newPiece.Model = (GameObject)Instantiate(PieceModels.PieceModels[((int)piece.Type)], Vector3.zero, Quaternion.identity);
 				newPiece.Model.transform.localScale = Vector3.one;
 				newPiece.Model.transform.SetParent(newPiece.transform, false);
 				
