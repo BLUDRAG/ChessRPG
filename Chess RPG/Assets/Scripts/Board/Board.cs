@@ -14,7 +14,7 @@ namespace Gamify
 		/// <summary>
 		/// A list of all the blocks currently in the level.
 		/// </summary>
-		public List<BlockBase> LevelBlocks = new List<BlockBase>();
+		public List<GameBlock> LevelBlocks = new List<GameBlock>();
 		
 		/// <summary>
 		/// The block prefab.
@@ -60,7 +60,22 @@ namespace Gamify
 				newBlock.Block = normalBlock;
 				newBlock.gameObject.name = "Block " + newBlock.Block.File.ToString() + ((int)newBlock.Block.Rank).ToString();
 				newBlock.PrepareBlock();
+				
+				LevelBlocks.Add(newBlock);
 			}
+		}
+		
+		/// <summary>
+		/// Removes all blocks within the current game.
+		/// </summary>
+		public void ClearBlocks()
+		{
+			foreach(GameBlock block in LevelBlocks)
+			{
+				DestroyImmediate(block.gameObject);
+			}
+			
+			LevelBlocks.Clear();
 		}
 	}
 }

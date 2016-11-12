@@ -159,19 +159,19 @@ public class FGCodeWindow : EditorWindow
 		EditorApplication.update -= InitOnLoad;
 		EditorApplication.update += InitOnLoad;
 		
-		var s = EditorPrefs.GetString("ScriptInspectorRecentGUIDs", "");
-		guidHistory.AddRange(s.Split(new[]{';'}, System.StringSplitOptions.RemoveEmptyEntries));
+		//var s = EditorPrefs.GetString("ScriptInspectorRecentGUIDs", "");
+		//guidHistory.AddRange(s.Split(new[]{';'}, System.StringSplitOptions.RemoveEmptyEntries));
 		
-		defaultDockNextTo = EditorPrefs.GetString("ScriptInspectorDefaultDockNextTo", "");
-		if (defaultDockNextTo == "")
-			defaultDockNextTo = null;
+		//defaultDockNextTo = EditorPrefs.GetString("ScriptInspectorDefaultDockNextTo", "");
+		//if (defaultDockNextTo == "")
+		//	defaultDockNextTo = null;
 		
-		defaultPosition = new Rect(
-			EditorPrefs.GetFloat("ScriptInspectorDefaultPositionX", 100f),
-			EditorPrefs.GetFloat("ScriptInspectorDefaultPositionY", 100f),
-			EditorPrefs.GetFloat("ScriptInspectorDefaultPositionW", 600f),
-			EditorPrefs.GetFloat("ScriptInspectorDefaultPositionH", 380f)
-		);
+		//defaultPosition = new Rect(
+		//	EditorPrefs.GetFloat("ScriptInspectorDefaultPositionX", 100f),
+		//	EditorPrefs.GetFloat("ScriptInspectorDefaultPositionY", 100f),
+		//	EditorPrefs.GetFloat("ScriptInspectorDefaultPositionW", 600f),
+		//	EditorPrefs.GetFloat("ScriptInspectorDefaultPositionH", 380f)
+		//);
 	}
 
 	private static void InitOnLoad()

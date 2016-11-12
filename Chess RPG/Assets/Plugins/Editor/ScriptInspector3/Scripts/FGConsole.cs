@@ -45,13 +45,6 @@ public class FGConsole : EditorWindow
 	private static object logEntry;
 	
 	public static int repaintOnUpdateCounter = 0;
-
-	private static bool _openLogEntriesInSi2;
-	private static bool openLogEntriesInSi2
-	{
-		get { return _openLogEntriesInSi2; }
-		set { _openLogEntriesInSi2 = value; EditorPrefs.SetBool("ScriptInspector.OpenLogEntriesInSi2", value); }
-	}
 	
 	public void AddItemsToMenu(GenericMenu menu)
 	{
@@ -62,8 +55,6 @@ public class FGConsole : EditorWindow
 	
 	static FGConsole()
 	{
-		_openLogEntriesInSi2 = EditorPrefs.GetBool("ScriptInspector.OpenLogEntriesInSi2", true);
-
 		consoleWindowType = typeof(EditorWindow).Assembly.GetType("UnityEditor.ConsoleWindow");
 		if (consoleWindowType != null)
 		{
@@ -389,16 +380,9 @@ Click the button below to open the Console window...", MessageType.Info);
 					new GUIContent(scriptName + " - " + functionName.Replace(':', '.') + ", line " + atLine),
 					false,
 					() => {
-						if (openLogEntriesInSi2)
-						{
-							FGCodeWindow.addRecentLocationForNextAsset = true;
-							FGCodeWindow.OpenAssetInTab(guid, atLine);
-						}
-						else
-						{
+						
 							FGCodeWindow.openInExternalIDE = true;
 							AssetDatabase.OpenAsset(AssetDatabase.LoadMainAssetAtPath(assetPath), atLine);
-						}
 					});
 			}
 		}
@@ -406,11 +390,6 @@ Click the button below to open the Console window...", MessageType.Info);
 		if (codeViewPopupMenu.GetItemCount() > 0)
 		{
 			codeViewPopupMenu.AddSeparator(string.Empty);
-			codeViewPopupMenu.AddItem(
-				new GUIContent("Open Call-Stack Entries in Script Inspector"),
-				openLogEntriesInSi2,
-				() => { openLogEntriesInSi2 = !openLogEntriesInSi2; }
-				);
 
 			GUIUtility.hotControl = 0;
 			codeViewPopupMenu.ShowAsContext();

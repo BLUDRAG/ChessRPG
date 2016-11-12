@@ -38,8 +38,10 @@ namespace Gamify
 				break;
 			}
 			
-			BlockMaterial = GetComponent<MeshRenderer>().material;
+			BlockMaterial = new Material(Shader.Find("Unlit/Color"));
 			BlockMaterial.SetColor("_Color", blockColour);
+			
+			GetComponent<MeshRenderer>().sharedMaterial = BlockMaterial;
 			
 			transform.localPosition = new Vector3(((int)Block.Rank - 1) * 2f, 0.5f, ((int)Block.File - 1) * 2f);
 			/// Temporary?
