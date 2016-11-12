@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Gamify
 {
@@ -18,6 +19,11 @@ namespace Gamify
 		/// The piece prefab.
 		/// </summary>
 		public GamePiece PiecePrefab;
+		
+		/// <summary>
+		/// A list of all pieces within the current game.
+		/// </summary>
+		public List<GamePiece> ActivePieces;
 		
 		/// <summary>
 		/// The piece container object.
@@ -49,8 +55,23 @@ namespace Gamify
 				newPiece.transform.localPosition = new Vector3(((int)piece.Rank - 1) * 2f, 0.6f, ((int)piece.File - 1) * 2f);
 				//newPiece.PreparePiece();
 				
+				ActivePieces.Add(newPiece);
+				
 			}
 			// Temporary
+		}
+		
+		/// <summary>
+		/// Deletes all active pieces within the current game.
+		/// </summary>
+		public void ClearPieces()
+		{
+			foreach(GamePiece piece in ActivePieces)
+			{
+				DestroyImmediate(piece.gameObject);
+			}
+			
+			ActivePieces.Clear();
 		}
 	}
 }
