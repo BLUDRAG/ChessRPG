@@ -13,7 +13,6 @@ namespace Gamify
 	/// Instances of this class should contain all the different
 	/// available pieces settings.
 	/// </summary>
-	[CreateAssetMenu]
 	public class PieceSettings : ScriptableObject {
 		
 		#if UNITY_EDITOR
