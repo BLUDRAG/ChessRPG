@@ -67,6 +67,14 @@ namespace Gamify
 				
 				newPiece.Model = (GameObject)Instantiate(PieceModels.PieceModels[((int)piece.Type)], Vector3.zero, Quaternion.identity);
 				newPiece.Model.transform.localScale = Vector3.one;
+				
+				switch(piece.Colour)
+				{
+				case Enums.PieceColour.Black:
+					newPiece.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+					break;
+				}
+				
 				newPiece.Model.transform.SetParent(newPiece.transform, false);
 				
 				newPiece.gameObject.name = piece.Colour.ToString() + " " + piece.Type.ToString() + " " + piece.File.ToString() + piece.Rank.ToString();
