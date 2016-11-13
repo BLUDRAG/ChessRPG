@@ -24,11 +24,11 @@ namespace Gamify
 		/// <summary>
 		/// Handles events when this piece is highlighted.
 		/// </summary>
-		public abstract void OnHighlight(GameObject piece);
+		public abstract void OnHighlight(GamePiece piece);
 		
 		/// <summary>
 		/// Handles events when this piece is selected.
 		/// </summary>
-		public abstract void OnSelected(GameObject piece);
+		public abstract void OnSelected(GamePiece piece);
 	}
 }

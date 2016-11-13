@@ -25,6 +25,11 @@ namespace Gamify
 		public GameObject Model;
 		
 		/// <summary>
+		/// The shader applied to all materials attached to this piece.
+		/// </summary>
+		public string ActiveShader = "Standard";
+		
+		/// <summary>
 		/// All materials attached to the piece model.
 		/// </summary>
 		private Material[] _materials;
@@ -35,6 +40,7 @@ namespace Gamify
 		public void PreparePiece()
 		{
 			UpdateModelColours();
+			
 		}
 		
 		/// <summary>
@@ -56,7 +62,7 @@ namespace Gamify
 			}
 			
 			// Prepare the material with the applied colour
-			Material pieceMaterial = new Material(Shader.Find("Standard"));
+			Material pieceMaterial = new Material(Shader.Find(ActiveShader));
 			pieceMaterial.SetColor("_Color", appliedColour);
 			
 			// And finally apply the material to each mesh renderer

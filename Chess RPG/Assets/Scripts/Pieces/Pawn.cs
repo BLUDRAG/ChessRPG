@@ -16,7 +16,7 @@ namespace Gamify
 		/// <summary>
 		/// Handles events when this piece is highlighted.
 		/// </summary>
-		public override void OnHighlight(GameObject piece)
+		public override void OnHighlight(GamePiece piece)
 		{
 			// Temporary
 			Debug.Log("GAMIFY : Piece highlighted > " + piece.name);
@@ -26,7 +26,7 @@ namespace Gamify
 		/// <summary>
 		/// Handles events when this piece is selected.
 		/// </summary>
-		public override void OnSelected(GameObject piece)
+		public override void OnSelected(GamePiece piece)
 		{
 			// Temporary
 			Debug.Log("GAMIFY : Piece selected > " + piece.name);
