@@ -40,6 +40,7 @@ namespace Gamify
                 GUILayout.Label("Colour", EditorStyles.boldLabel);
                 GUILayout.Label("File", EditorStyles.boldLabel);
 	            GUILayout.Label("Rank", EditorStyles.boldLabel);
+                GUILayout.Label("Align", EditorStyles.boldLabel);
 	            GUILayout.Label("", EditorStyles.boldLabel);
             
                 EditorGUILayout.EndHorizontal();
@@ -54,6 +55,7 @@ namespace Gamify
                     Enums.PieceColour newColour = (Enums.PieceColour)EditorGUILayout.EnumPopup(piece.Colour);
                     Enums.Files newFile = (Enums.Files)EditorGUILayout.EnumPopup(piece.File);
                     Enums.Ranks newRank = (Enums.Ranks)EditorGUILayout.EnumPopup(piece.Rank);
+                    Enums.Alignment newAlignment = (Enums.Alignment)EditorGUILayout.EnumPopup(piece.Alignment);
 
                     if(GUILayout.Button("Remove"))
                     {
@@ -70,6 +72,7 @@ namespace Gamify
                         piece.Colour = newColour;
                         piece.File = newFile;
                         piece.Rank = newRank;
+                        piece.Alignment = newAlignment;
                     }
 
                     EditorUtility.SetDirty(_settings);
@@ -77,7 +80,7 @@ namespace Gamify
 
                 if(GUILayout.Button("Add " + colour.ToString() + " Piece"))
                 {
-                    _settings.Pieces.Add(new PieceSettingsWrapper(Enums.PieceType.Pawn, colour, Enums.Files.A, Enums.Ranks._1));
+                    _settings.Pieces.Add(new PieceSettingsWrapper(Enums.PieceType.Pawn, colour, Enums.Files.A, Enums.Ranks._1, Enums.Alignment.North));
 
                     EditorUtility.SetDirty(_settings);
                 }

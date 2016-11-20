@@ -64,5 +64,12 @@ namespace Gamify
 			Black,
             Red
 		}
+
+        // Represents the side the player is on.
+        public enum Alignment
+        {
+            North,
+            South
+        }
 	}
 }

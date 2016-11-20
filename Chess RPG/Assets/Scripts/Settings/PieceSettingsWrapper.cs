@@ -17,13 +17,16 @@ namespace Gamify
 		public Enums.Files File;
 		
 		public Enums.Ranks Rank;
+
+        public Enums.Alignment Alignment;
 		
-		public PieceSettingsWrapper(Enums.PieceType Type, Enums.PieceColour Colour, Enums.Files File, Enums.Ranks Rank)
+        public PieceSettingsWrapper(Enums.PieceType Type, Enums.PieceColour Colour, Enums.Files File, Enums.Ranks Rank, Enums.Alignment Alignment)
 		{
 			this.Type = Type;
 			this.Colour = Colour;
 			this.File = File;
 			this.Rank = Rank;
+            this.Alignment = Alignment;
 		}
 	}
 }

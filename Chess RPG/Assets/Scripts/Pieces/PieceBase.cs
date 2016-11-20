@@ -11,6 +11,11 @@ namespace Gamify
 	/// </summary>
 	public abstract class PieceBase {
 		
+        /// <summary>
+        /// The piece's alignment, defined by the owned player.
+        /// </summary>
+        public Enums.Alignment Alignment;
+
 		/// <summary>
 		/// The base type of this piece.
 		/// </summary>
