@@ -71,7 +71,7 @@ namespace Gamify
                 switch(piece.Alignment)
 				{
                 case Enums.Alignment.South:
-					newPiece.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+					newPiece.Model.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
 					break;
 				}
 				
