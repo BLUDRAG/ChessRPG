@@ -20,11 +20,6 @@ namespace Gamify
         public Image HPBar;
 
         /// <summary>
-        /// The HP text.
-        /// </summary>
-        public Text HPText;
-
-        /// <summary>
         /// Keeps track of the previous HP value. Used to optimise HP update operations.
         /// </summary>
         private int _previousHP;
@@ -39,7 +34,6 @@ namespace Gamify
                     _previousHP = GamePiece.Piece.CurrentHP;
 
                     HPBar.fillAmount = Utilities.GetValuePercentage(0f, GamePiece.Piece.MaxHP, _previousHP);
-                    HPText.text = _previousHP.ToString();
                 }
             }
         }
