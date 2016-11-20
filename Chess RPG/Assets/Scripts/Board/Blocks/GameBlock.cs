@@ -29,17 +29,9 @@ namespace Gamify
 		public void PrepareBlock()
 		{
 			/// Temporary?
-			Color blockColour = Color.white;
-			
-			switch(Block.Colour)
-			{
-			case Enums.BlockColour.Black:
-				blockColour = Color.black;
-				break;
-			}
 			
 			BlockMaterial = new Material(Shader.Find("Unlit/Color"));
-			BlockMaterial.SetColor("_Color", blockColour);
+            BlockMaterial.SetColor("_Color", Utilities.GetBlockColor(Block.Colour));
 			
 			GetComponent<MeshRenderer>().sharedMaterial = BlockMaterial;
 			

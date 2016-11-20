@@ -68,33 +68,21 @@ namespace Gamify
 				
 				foreach(BlockSettingsWrapper block in filteredFile)
 				{
-					GUIStyle blockStyle = new GUIStyle(GUI.skin.button);
-					
-					switch(block.Colour)
-					{
-					case Enums.BlockColour.Black:
-						GUI.backgroundColor = Color.black;
-						break;
-					case Enums.BlockColour.White:
-						GUI.backgroundColor = Color.white;
-						break;
-					}										
-					
+					GUIStyle blockStyle = new GUIStyle(GUI.skin.button);					
+                    GUI.backgroundColor = Utilities.GetBlockColor(block.Colour);
+
 					if(GUILayout.Button("", blockStyle))
 					{
 						GenericMenu menu = new GenericMenu();
 						
-						Hashtable selectWhite = new Hashtable();
-						selectWhite["Colour"] = Enums.BlockColour.White;
-						selectWhite["Block"] = block;
-						
-						menu.AddItem(new GUIContent("Colour/White"), false, SetColourCallback, selectWhite);
-						
-						Hashtable selectBlack = new Hashtable();
-						selectBlack["Colour"] = Enums.BlockColour.Black;
-						selectBlack["Block"] = block;
-						
-						menu.AddItem(new GUIContent("Colour/Black"), false, SetColourCallback, selectBlack);
+                        foreach(Enums.BlockColour color in Enum.GetValues(typeof(Enums.BlockColour)))
+                        {
+                            Hashtable selection = new Hashtable();
+                            selection["Colour"] = color;
+                            selection["Block"] = block;
+
+                            menu.AddItem(new GUIContent("Colour/" + color.ToString()), false, SetColourCallback, selection);
+                        }
 						
 						menu.ShowAsContext();
 					}

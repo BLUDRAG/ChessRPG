@@ -53,14 +53,16 @@ namespace Gamify
 		public enum PieceColour
 		{
 			White,
-			Black
+			Black,
+            Red
 		}
 		
 		// Contains all possible block colours.
 		public enum BlockColour
 		{
 			White,
-			Black
+			Black,
+            Red
 		}
 	}
 }

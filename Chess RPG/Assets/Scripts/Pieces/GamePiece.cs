@@ -51,19 +51,9 @@ namespace Gamify
 			// Retrieve every mesh renderer within the model
 			MeshRenderer[] meshes = Model.GetComponentsInChildren<MeshRenderer>();			
 			
-			// Figure out which colour we need to apply
-			Color appliedColour = Color.white;
-			
-			switch(Piece.PieceColour)
-			{
-			case Enums.PieceColour.Black:
-				appliedColour = Color.black;
-				break;
-			}
-			
 			// Prepare the material with the applied colour
 			Material pieceMaterial = new Material(Shader.Find(ActiveShader));
-			pieceMaterial.SetColor("_Color", appliedColour);
+            pieceMaterial.SetColor("_Color", Utilities.GetPieceColor(Piece.PieceColour));
 			
 			// And finally apply the material to each mesh renderer
 			for(int i = 0; i < meshes.Length; i++)
