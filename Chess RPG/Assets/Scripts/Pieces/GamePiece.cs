@@ -40,7 +40,6 @@ namespace Gamify
 		public void PreparePiece()
 		{
 			UpdateModelColours();
-			
 		}
 		
 		/// <summary>

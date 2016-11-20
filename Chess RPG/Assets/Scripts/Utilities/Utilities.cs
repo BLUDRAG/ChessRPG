@@ -44,5 +44,10 @@ namespace Gamify
 			
 			return parsedColor;
 		}
+
+        public static float GetValuePercentage(float minValue, float maxValue, float currentValue)
+        {
+            return (currentValue - minValue) / (maxValue - minValue);
+        }
 	}
 }
