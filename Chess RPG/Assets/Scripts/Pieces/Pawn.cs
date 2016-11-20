@@ -7,10 +7,12 @@ namespace Gamify
 	/// This class defines the basic pawn piece type.
 	/// </summary>
 	public class Pawn : PieceBase {
-		
+
 		public Pawn()
 		{
 			PieceType = Enums.PieceType.Pawn;
+            MaxHP = (int)Enums.PieceHP.Pawn;
+            CurrentHP = MaxHP;
 		}
 		
 		/// <summary>

@@ -12,6 +12,16 @@ namespace Gamify
 	public abstract class PieceBase {
 		
         /// <summary>
+        /// The max HP this piece possesses.
+        /// </summary>
+        public int MaxHP;
+
+        /// <summary>
+        /// The current HP for this piece.
+        /// </summary>
+        public int CurrentHP;
+
+        /// <summary>
         /// The piece's alignment, defined by the owned player.
         /// </summary>
         public Enums.Alignment Alignment;

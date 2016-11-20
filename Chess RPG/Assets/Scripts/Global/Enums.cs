@@ -71,5 +71,11 @@ namespace Gamify
             North,
             South
         }
+
+        // Contains the default maximum HP all pieces possess.
+        public enum PieceHP
+        {
+            Pawn = 100
+        }
 	}
 }
