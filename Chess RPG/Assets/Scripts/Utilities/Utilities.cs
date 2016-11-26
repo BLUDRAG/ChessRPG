@@ -49,5 +49,10 @@ namespace Gamify
         {
             return (currentValue - minValue) / (maxValue - minValue);
         }
+
+        public static Vector2 CoordToPosition(Enums.Files file, Enums.Ranks rank)
+        {
+            return new Vector2((int)file, (int)rank);
+        }
 	}
 }

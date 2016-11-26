@@ -79,7 +79,11 @@ namespace Gamify
 				
 				newPiece.gameObject.name = piece.Colour.ToString() + " " + piece.Type.ToString() + " " + piece.File.ToString() + piece.Rank.ToString();
 				newPiece.transform.localPosition = new Vector3(((int)piece.Rank - 1) * 2f, 0.6f, ((int)piece.File - 1) * 2f);
+
 				newPiece.Piece.PieceColour = piece.Colour;
+                newPiece.Piece.File = piece.File;
+                newPiece.Piece.Rank = piece.Rank;
+
 				newPiece.PreparePiece();
 				
 				ActivePieces.Add(newPiece);

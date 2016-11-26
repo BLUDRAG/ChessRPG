@@ -22,6 +22,27 @@ namespace Gamify
         public int CurrentHP;
 
         /// <summary>
+        /// Gets the position of this piece.
+        /// </summary>
+        public virtual Vector2 Position
+        {
+            get
+            {
+                return Utilities.CoordToPosition(File, Rank);
+            }
+        }
+
+        /// <summary>
+        /// The file this piece holds.
+        /// </summary>
+        public Enums.Files File;
+
+        /// <summary>
+        /// The rank this piece holds.
+        /// </summary>
+        public Enums.Ranks Rank;
+
+        /// <summary>
         /// The piece's alignment, defined by the owned player.
         /// </summary>
         public Enums.Alignment Alignment;
