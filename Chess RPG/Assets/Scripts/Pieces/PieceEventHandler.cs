@@ -20,7 +20,7 @@ namespace Gamify
 			PieceParent = transform.GetComponentInParent<GamePiece>();
 		}
 		
-		public void OnMouseUp()
+		public void OnMouseDown()
 		{
 			if(PieceParent)
 			{

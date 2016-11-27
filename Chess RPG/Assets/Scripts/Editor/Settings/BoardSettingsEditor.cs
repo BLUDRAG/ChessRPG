@@ -12,8 +12,6 @@ namespace Gamify
 	[CustomEditor(typeof(BoardSettings))]
 	public class BoardSettingsEditor : Editor {
 		
-		/// TODO : Make this a lot nicer
-		
 		private BoardSettings _settings;
 		
 		public override void OnInspectorGUI()

@@ -10,9 +10,7 @@ namespace Gamify
         /// </summary>
     	public override void OnHighlight(GamePiece piece)
         {
-            // Temporary
-            Debug.Log("GAMIFY : Piece highlighted > " + piece.name);
-            // Temporary
+            
         }
 
         /// <summary>
@@ -20,9 +18,7 @@ namespace Gamify
         /// </summary>
         public override void OnSelected(GamePiece piece)
         {
-            // Temporary
-            Debug.Log("GAMIFY : Piece selected > " + piece.name);
-            // Temporary
+            InputManager.Instance.SelectPiece(piece);
         }
     }
 }

@@ -13,21 +13,17 @@ namespace Gamify
 		/// <summary>
 		/// Handles events when this block is highlighted.
 		/// </summary>
-		public override void OnHighlight(GameObject block)
+		public override void OnHighlight(GameBlock block)
 		{
-			// Temporary
-			Debug.Log("GAMIFY : Block highlighted > " + block.name);
-			// Temporary
-		}
-		
-		/// <summary>
-		/// Handles events when this block is selected.
-		/// </summary>
-		public override void OnSelected(GameObject block)
-		{
-			// Temporary
-			Debug.Log("GAMIFY : Block selected > " + block.name);
-			// Temporary
+            
+        }
+        
+        /// <summary>
+        /// Handles events when this block is selected.
+        /// </summary>
+        public override void OnSelected(GameBlock block)
+        {
+            InputManager.Instance.SelectBlock(block);
 		}
 	}
 }

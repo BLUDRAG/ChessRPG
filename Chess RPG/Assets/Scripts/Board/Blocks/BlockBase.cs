@@ -29,11 +29,11 @@ namespace Gamify
 		/// <summary>
 		/// Handles events when this block is highlighted.
 		/// </summary>
-		public abstract void OnHighlight(GameObject block);
+        public abstract void OnHighlight(GameBlock block);
 		
 		/// <summary>
 		/// Handles events when this block is selected.
 		/// </summary>
-		public abstract void OnSelected(GameObject block);
+        public abstract void OnSelected(GameBlock block);
 	}
 }
