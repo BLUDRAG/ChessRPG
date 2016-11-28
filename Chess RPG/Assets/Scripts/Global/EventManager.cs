@@ -17,7 +17,7 @@ namespace Gamify
 	/// a Hashtable allows for any number of
 	/// data to be sent between classes.
 	/// </summary>
-	public class EventManager
+	public class EventManager<T>
 	{
 
 		/// <summary>
@@ -26,14 +26,14 @@ namespace Gamify
 		/// Only one event per subscriber is allowed in order to
 		/// maintain clean event handling.
 		/// </summary>
-		private static Dictionary<string, Action<object>> events = new Dictionary<string, Action<object>>();
+		private static Dictionary<string, Action<T>> events = new Dictionary<string, Action<T>>();
 
 		/// <summary>
 		/// Subscribes the event to the EventManager.
 		/// </summary>
 		/// <param name="eventType">Event type.</param>
 		/// <param name="eventCallback">Event callback.</param>
-		public static void SubscribeEvent(string eventType, Action<object> eventCallback)
+		public static void SubscribeEvent(string eventType, Action<T> eventCallback)
 		{
 			// Only subscribe the event to the EventManager if it has not been subscribed yet
 			if (!events.ContainsKey(eventType))
@@ -41,7 +41,9 @@ namespace Gamify
 				events.Add(eventType, eventCallback);
 			} else
 			{
+                #if UNITY_EDITOR
 				Debug.LogWarning(string.Format("Subscriber for {0} already exists.", eventType));
+                #endif
 			}
 		}
 
@@ -70,7 +72,7 @@ namespace Gamify
 		/// </summary>
 		/// <param name="eventType">Event type.</param>
 		/// <param name="input">Input.</param>
-		public static void Invoke(string eventType, object input)
+		public static void Invoke(string eventType, T input)
 		{
 			if (events.ContainsKey(eventType))
 			{
@@ -78,5 +80,4 @@ namespace Gamify
 			}
 		}
 	}
-
 }

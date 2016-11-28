@@ -10,7 +10,7 @@ namespace Gamify
         /// </summary>
     	public override void OnHighlight(GamePiece piece)
         {
-            
+            EventManager<GamePiece>.Invoke(EventDefinitions.PieceHighlighted, piece);
         }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace Gamify
         /// </summary>
         public override void OnSelected(GamePiece piece)
         {
-            InputManager.Instance.SelectPiece(piece);
+            EventManager<GamePiece>.Invoke(EventDefinitions.PieceSelected, piece);
         }
     }
 }

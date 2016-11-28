@@ -1,5 +1,4 @@
-﻿
-namespace Gamify
+﻿namespace Gamify
 {
 	/// <summary>
 	/// The purpose of this class is to act as a container

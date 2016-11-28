@@ -23,7 +23,7 @@ namespace Gamify
         /// </summary>
         public override void OnSelected(GameBlock block)
         {
-            InputManager.Instance.SelectBlock(block);
+            EventManager<GameBlock>.Invoke(EventDefinitions.BlockSelected, block);
 		}
 	}
 }
