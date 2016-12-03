@@ -43,5 +43,17 @@ namespace Gamify
                 Debug.LogWarning("GAMIFY - " + name + " could not find a GamePiece parent reference.");
             }
         }
+	    
+	    public void OnMouseExit()
+	    {
+		    if(BlockParent)
+		    {
+			    BlockParent.Block.OnUnhighlight(BlockParent);
+		    }
+		    else
+		    {
+			    Debug.LogWarning("GAMIFY - " + name + " could not find a GamePiece parent reference.");
+		    }
+	    }
     }
 }

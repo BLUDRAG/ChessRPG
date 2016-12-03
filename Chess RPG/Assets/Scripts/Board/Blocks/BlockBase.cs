@@ -27,6 +27,11 @@ namespace Gamify
 		public Enums.Ranks Rank;
 		
 		/// <summary>
+		/// The highlight type associated with this block.
+		/// </summary>
+		public Enums.HighlightTypes HighlightType;
+		
+		/// <summary>
 		/// Handles events when this block is highlighted.
 		/// </summary>
         public abstract void OnHighlight(GameBlock block);
@@ -34,6 +39,11 @@ namespace Gamify
 		/// <summary>
 		/// Handles events when this block is selected.
 		/// </summary>
-        public abstract void OnSelected(GameBlock block);
+		public abstract void OnSelected(GameBlock block);
+		
+		/// <summary>
+		/// Handles events when this block is unhighlighted.
+		/// </summary>
+		public abstract void OnUnhighlight(GameBlock block);
 	}
 }

@@ -11,7 +11,8 @@ namespace Gamify
         void Awake()
         {
             EventManager<GamePiece>.SubscribeEvent(EventDefinitions.PieceSelected, OnPieceSelected);
-            EventManager<GamePiece>.SubscribeEvent(EventDefinitions.PieceHighlighted, OnPieceHighlighted);
+	        EventManager<GamePiece>.SubscribeEvent(EventDefinitions.PieceHighlighted, OnPieceHighlighted);
+	        EventManager<GamePiece>.SubscribeEvent(EventDefinitions.PieceUnhighlighted, OnPieceUnhighlighted);
         }
 
         /// <summary>
@@ -21,7 +22,7 @@ namespace Gamify
         private void OnPieceSelected(GamePiece piece)
         {
             // Temporary
-            print(piece.Piece.PieceType);
+	        print(piece.Piece.PieceType + " selected");
             InputManager.Instance.SelectPiece(piece);
             // Temporary
         }
@@ -33,8 +34,19 @@ namespace Gamify
         private void OnPieceHighlighted(GamePiece piece)
         {
             // Temporary
-            print(piece.Piece.PieceType);
+	        print(piece.Piece.PieceType + " highlighted");
             // Temporary
         }
+		
+		/// <summary>
+        /// Performs any available action on the unhighlighted piece.
+        /// </summary>
+        /// <param name="piece">Piece.</param>
+		private void OnPieceUnhighlighted(GamePiece piece)
+		{
+            // Temporary
+			print(piece.Piece.PieceType + " unhighlighted");
+            // Temporary
+		}
 	}
 }

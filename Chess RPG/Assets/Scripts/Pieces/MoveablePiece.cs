@@ -20,5 +20,13 @@ namespace Gamify
         {
             EventManager<GamePiece>.Invoke(EventDefinitions.PieceSelected, piece);
         }
+	    
+	    /// <summary>
+	    /// Handles events when this piece is unhighlighted.
+	    /// </summary>
+	    public override void OnUnhighlight(GamePiece piece)
+	    {
+	    	EventManager<GamePiece>.Invoke(EventDefinitions.PieceUnhighlighted, piece);
+	    }
     }
 }

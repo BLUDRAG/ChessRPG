@@ -11,7 +11,8 @@ namespace Gamify
         void Awake()
         {
             EventManager<GameBlock>.SubscribeEvent(EventDefinitions.BlockSelected, OnBlockSelected);
-            EventManager<GameBlock>.SubscribeEvent(EventDefinitions.BlockHighlighted, OnBlockHighlighted);
+	        EventManager<GameBlock>.SubscribeEvent(EventDefinitions.BlockHighlighted, OnBlockHighlighted);
+	        EventManager<GameBlock>.SubscribeEvent(EventDefinitions.BlockUnhighlighted, OnBlockUnhighlighted);
         }
 
         /// <summary>
@@ -21,7 +22,7 @@ namespace Gamify
         private void OnBlockSelected(GameBlock block)
         {
             // Temporary
-            print(block.Block.Colour);
+	        print(block.Block.Colour + " selected");
             InputManager.Instance.SelectBlock(block);
             // Temporary
         }
@@ -33,8 +34,19 @@ namespace Gamify
         private void OnBlockHighlighted(GameBlock block)
         {
             // Temporary
-            print(block.Block.Colour);
+	        print(block.Block.Colour + " highlighted");
             // Temporary
         }
+	    
+	    /// <summary>
+        /// Performs any available action on the unhighlighted block.
+        /// </summary>
+        /// <param name="block">Block.</param>
+	    private void OnBlockUnhighlighted(GameBlock block)
+	    {
+            // Temporary
+		    print(block.Block.Colour + " unhighlighted");
+            // Temporary
+	    }
     }
 }

@@ -63,6 +63,12 @@
 			Black,
             Red
 		}
+		
+		// Contains a list of all highlight types for pieces and blocks.
+		public enum HighlightTypes
+		{
+			MaterialOverlay
+		}
 
         // Represents the side the player is on.
         public enum Alignment
