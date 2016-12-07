@@ -15,6 +15,13 @@ namespace Gamify
 	        EventManager<GamePiece>.SubscribeEvent(EventDefinitions.PieceUnhighlighted, OnPieceUnhighlighted);
         }
 
+        void OnDestroy()
+        {
+            EventManager<GamePiece>.UnsubscribeEvent(EventDefinitions.PieceSelected, OnPieceSelected);
+            EventManager<GamePiece>.UnsubscribeEvent(EventDefinitions.PieceHighlighted, OnPieceHighlighted);
+            EventManager<GamePiece>.UnsubscribeEvent(EventDefinitions.PieceUnhighlighted, OnPieceUnhighlighted);
+        }
+
         /// <summary>
         /// Performs any available action on the selected piece.
         /// </summary>

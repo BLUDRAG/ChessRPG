@@ -22,11 +22,9 @@ namespace Gamify
 
 		/// <summary>
 		/// Contains a persistent list of all events registered to the EventManager.
-		/// 
-		/// Only one event per subscriber is allowed in order to
-		/// maintain clean event handling.
 		/// </summary>
-		private static Dictionary<string, Action<T>> events = new Dictionary<string, Action<T>>();
+		private static Dictionary<string, List<Action<T>>> events = new Dictionary<string, List<Action<T>>>();
+        private static Dictionary<string, List<Action>> voidEvents = new Dictionary<string, List<Action>>();
 
 		/// <summary>
 		/// Subscribes the event to the EventManager.
@@ -38,26 +36,70 @@ namespace Gamify
 			// Only subscribe the event to the EventManager if it has not been subscribed yet
 			if (!events.ContainsKey(eventType))
 			{
-				events.Add(eventType, eventCallback);
-			} else
+                List<Action<T>> newEvents = new List<Action<T>>();
+                newEvents.Add(eventCallback);
+                events.Add(eventType, newEvents);
+			} 
+            else
 			{
-                #if UNITY_EDITOR
-				Debug.LogWarning(string.Format("Subscriber for {0} already exists.", eventType));
-                #endif
+                events[eventType].Add(eventCallback);
 			}
 		}
+
+        /// <summary>
+        /// Override for subscribing void events.
+        /// </summary>
+        /// <param name="eventType">Event type.</param>
+        /// <param name="eventCallback">Event callback.</param>
+        public static void SubscribeEvent(string eventType, Action eventCallback)
+        {
+            // Only subscribe the event to the EventManager if it has not been subscribed yet
+            if (!voidEvents.ContainsKey(eventType))
+            {
+                List<Action> newEvents = new List<Action>();
+                newEvents.Add(eventCallback);
+                voidEvents.Add(eventType, newEvents);
+            } else
+            {
+                voidEvents[eventType].Add(eventCallback);
+            }
+        }
 
 		/// <summary>
 		/// Unsubscribes the event from the EventManager.
 		/// </summary>
 		/// <param name="eventType">Event type.</param>
-		public static void UnsubscribeEvent(string eventType)
+        /// <param name="eventCallback">Event callback.</param>
+        public static void UnsubscribeEvent(string eventType, Action<T> eventCallback)
 		{
-			if (events.ContainsKey(eventType))
-			{
-				events.Remove(eventType);
-			}
+            if (events.ContainsKey(eventType))
+            {
+                events[eventType].Remove(eventCallback);
+
+                if (events[eventType].Count == 0)
+                {
+                    events.Remove(eventType);
+                }
+            }
 		}
+
+        /// <summary>
+        /// Override for unsubscribing void events.
+        /// </summary>
+        /// <param name="eventType">Event type.</param>
+        /// <param name="eventCallback">Event callback.</param>
+        public static void UnsubscribeEvent(string eventType, Action eventCallback)
+        {
+            if (voidEvents.ContainsKey(eventType))
+            {
+                voidEvents[eventType].Remove(eventCallback);
+
+                if (voidEvents[eventType].Count == 0)
+                {
+                    voidEvents.Remove(eventType);
+                }
+            }
+        }
 
 		/// <summary>
 		/// Clears all events from the EventManager.
@@ -65,6 +107,7 @@ namespace Gamify
 		public static void ClearAllEvents()
 		{
 			events.Clear();
+            voidEvents.Clear();
 		}
 
 		/// <summary>
@@ -76,8 +119,26 @@ namespace Gamify
 		{
 			if (events.ContainsKey(eventType))
 			{
-				events[eventType].Invoke(input);
+                for (int e = 0; e < events.Count; e++)
+                {
+                    events[eventType][e].Invoke(input);
+                }
 			}
 		}
+
+        /// <summary>
+        /// Override event call with no input data.
+        /// </summary>
+        /// <param name="eventType">Event type.</param>
+        public static void Invoke(string eventType)
+        {
+            if (voidEvents.ContainsKey(eventType))
+            {
+                for (int e = 0; e < voidEvents.Count; e++)
+                {
+                    voidEvents[eventType][e].Invoke();
+                }
+            }
+        }
 	}
 }

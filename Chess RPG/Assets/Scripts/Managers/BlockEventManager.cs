@@ -15,6 +15,13 @@ namespace Gamify
 	        EventManager<GameBlock>.SubscribeEvent(EventDefinitions.BlockUnhighlighted, OnBlockUnhighlighted);
         }
 
+        void OnDestroy()
+        {
+            EventManager<GameBlock>.UnsubscribeEvent(EventDefinitions.BlockSelected, OnBlockSelected);
+            EventManager<GameBlock>.UnsubscribeEvent(EventDefinitions.BlockHighlighted, OnBlockHighlighted);
+            EventManager<GameBlock>.UnsubscribeEvent(EventDefinitions.BlockUnhighlighted, OnBlockUnhighlighted);
+        }
+
         /// <summary>
         /// Performs any available action on the selected block.
         /// </summary>
