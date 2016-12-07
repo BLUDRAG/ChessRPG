@@ -119,9 +119,9 @@ namespace Gamify
 		{
 			if (events.ContainsKey(eventType))
 			{
-                for (int e = 0; e < events.Count; e++)
+                for (int e = 0; e < events[eventType].Count; e++)
                 {
-                    events[eventType][e].Invoke(input);
+                    (events[eventType])[e].Invoke(input);
                 }
 			}
 		}
@@ -134,9 +134,9 @@ namespace Gamify
         {
             if (voidEvents.ContainsKey(eventType))
             {
-                for (int e = 0; e < voidEvents.Count; e++)
+                for (int e = 0; e < voidEvents[eventType].Count; e++)
                 {
-                    voidEvents[eventType][e].Invoke();
+                    (voidEvents[eventType])[e].Invoke();
                 }
             }
         }
