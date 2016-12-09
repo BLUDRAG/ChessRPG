@@ -46,6 +46,11 @@ namespace Gamify
         /// </summary>
         private bool _highlighting = false;
 
+        /// <summary>
+        /// Is true while the highlight is in effect.
+        /// </summary>
+        private bool _currentlyHighlighted = false;
+
         protected override void Start()
         {
             base.Start();
@@ -83,7 +88,10 @@ namespace Gamify
             {
                 _highlighting = true;
 
-                StartCoroutine("HighlightMaterials");
+                if(!_currentlyHighlighted)
+                {
+                    StartCoroutine("HighlightMaterials");
+                }
             }
 		}
 		
@@ -106,6 +114,8 @@ namespace Gamify
 
         protected virtual IEnumerator HighlightMaterials()
         {
+            _currentlyHighlighted = true;
+
             bool alreadySelected = false;
 
             while(_highlighting || _lerpDelta > 0f)
@@ -144,7 +154,17 @@ namespace Gamify
                 yield return new WaitForSeconds(HighlightDelay);
             }
 
+            // Make sure the original material colour is set
+            for(int r = 0; r < _componentMaterials.Count; r++)
+            {
+                for(int m = 0; m < _componentMaterials[r].Length; m++)
+                {
+                    (_componentMaterials[r])[m].color = (_cachedColours[r])[m];
+                }
+            }
+
             _lerpDelta = 0f;
+            _currentlyHighlighted = false;
         }
 	}
 }
