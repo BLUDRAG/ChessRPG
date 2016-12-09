@@ -36,7 +36,11 @@ namespace Gamify
 		{
 			if(PieceParent)
 			{
-				PieceParent.Piece.OnHighlight(PieceParent);
+                // Only highlight if the piece is not currently selected.
+                if(!PieceParent.Piece.IsSelected)
+                {
+                    PieceParent.Piece.OnHighlight(PieceParent);
+                }
 			}
 			else
 			{

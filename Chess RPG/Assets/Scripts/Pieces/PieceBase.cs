@@ -22,6 +22,11 @@ namespace Gamify
         public int CurrentHP;
 
         /// <summary>
+        /// Indicates whether this piece is currently selected.
+        /// </summary>
+        public bool IsSelected = false;
+
+        /// <summary>
         /// Gets the position of this piece.
         /// </summary>
         public virtual Vector2 Position

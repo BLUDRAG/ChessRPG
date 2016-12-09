@@ -106,18 +106,40 @@ namespace Gamify
 
         protected virtual IEnumerator HighlightMaterials()
         {
+            bool alreadySelected = false;
+
             while(_highlighting || _lerpDelta > 0f)
             {
-                for(int r = 0; r < _componentMaterials.Count; r++)
+                if(_isPiece && _gamePiece.Piece.IsSelected)
                 {
-                    for(int m = 0; m < _componentMaterials[r].Length; m++)
+                    _lerpForward = false;
+
+                    if(!alreadySelected)
                     {
-                        (_componentMaterials[r])[m].color = Color.Lerp((_cachedColours[r])[m], HighlightColour, _lerpDelta);
+                        for(int r = 0; r < _componentMaterials.Count; r++)
+                        {
+                            for(int m = 0; m < _componentMaterials[r].Length; m++)
+                            {
+                                (_componentMaterials[r])[m].color = HighlightColour;
+                            }
+                        }
+
+                        alreadySelected = true;
                     }
                 }
+                else
+                {
+                    for(int r = 0; r < _componentMaterials.Count; r++)
+                    {
+                        for(int m = 0; m < _componentMaterials[r].Length; m++)
+                        {
+                            (_componentMaterials[r])[m].color = Color.Lerp((_cachedColours[r])[m], HighlightColour, _lerpDelta);
+                        }
+                    }
 
-                _lerpDelta = _lerpForward ? _lerpDelta + HighlightStep : _lerpDelta - HighlightStep;
-                _lerpForward = _lerpDelta <= 0f || _lerpDelta >= 1f ? !_lerpForward : _lerpForward;
+                    _lerpDelta = _lerpForward ? _lerpDelta + HighlightStep : _lerpDelta - HighlightStep;
+                    _lerpForward = _lerpDelta <= 0f || _lerpDelta >= 1f ? !_lerpForward : _lerpForward;
+                }
 
                 yield return new WaitForSeconds(HighlightDelay);
             }
