@@ -120,7 +120,7 @@ namespace Gamify
 
             while(_highlighting || _lerpDelta > 0f)
             {
-                if(_isPiece && _gamePiece.Piece.IsSelected)
+                if((_isPiece && _gamePiece.Piece.IsSelected) || (_gameBlock != null && _gameBlock.Block.IsSelected))
                 {
                     _lerpForward = false;
 

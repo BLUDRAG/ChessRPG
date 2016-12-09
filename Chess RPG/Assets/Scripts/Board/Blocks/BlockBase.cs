@@ -11,6 +11,11 @@ namespace Gamify
 	/// </summary>
 	public abstract class BlockBase {
 		
+        /// <summary>
+        /// Indicates whether this block is currently selected.
+        /// </summary>
+        public bool IsSelected = false;
+
 		/// <summary>
 		/// The colour this Block possesses.
 		/// </summary>

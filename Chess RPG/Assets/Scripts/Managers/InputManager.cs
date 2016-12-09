@@ -59,7 +59,12 @@ namespace Gamify
                 SelectedPiece.Piece.IsSelected = true;
             }
 
-            // TODO If a block was selected, deselect it
+            // Deselect a previously selected piece.
+            if(SelectedBlock != null)
+            {
+                SelectedBlock.Block.IsSelected = false;
+                SelectedBlock = null;
+            }
         }
 
         /// <summary>
@@ -69,7 +74,18 @@ namespace Gamify
         public void SelectBlock(GameBlock block)
         {
             // TODO If a block has already been selected, send any necessary events to interested parties
-            SelectedBlock = block;
+
+            if(SelectedBlock != block)
+            {
+                // Deselect the previous piece first.
+                if(SelectedBlock != null)
+                {
+                    SelectedBlock.Block.IsSelected = false;
+                }
+
+                SelectedBlock = block;
+                SelectedBlock.Block.IsSelected = true;
+            }
 
             // Deselect a previously selected piece.
             if(SelectedPiece != null)
