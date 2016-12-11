@@ -25,6 +25,11 @@ namespace Gamify
 		/// The block container object.
 		/// </summary>
 		public Transform BlockContainer;
+
+        /// <summary>
+        /// All currently occupied slots in the session. An occupied slot will return true.
+        /// </summary>
+        public static bool[,] OccupiedSlots = new bool[8,8];
 		
 		void Start()
 		{
@@ -77,5 +82,24 @@ namespace Gamify
 			
 			LevelBlocks.Clear();
 		}
+
+        /// <summary>
+        /// Checks whether the given slot is currently occupied.
+        /// </summary>
+        /// <returns><c>true</c>, if occupied was sloted, <c>false</c> otherwise.</returns>
+        /// <param name="position">Position.</param>
+        public static bool SlotOccupied(Vector2 position)
+        {
+            return OccupiedSlots[(int)position.x, (int)position.y];
+        }
+
+        /// <summary>
+        /// Occupies the given slot.
+        /// </summary>
+        /// <param name="position">Position.</param>
+        public static void OccupySlot(Vector2 position)
+        {
+            OccupiedSlots[(int)position.x, (int)position.y] = true;
+        }
 	}
 }

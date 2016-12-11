@@ -82,5 +82,21 @@
         {
             Pawn = 100
         }
+
+        // Contains definitions for each movement type.
+        public enum MoveType
+        {
+            Forward,
+            Backward,
+            Left,
+            Right,
+            SingleDiagnoal,
+            Horizontal,
+            Vertical,
+            Diagonal,
+            OmniDirectional,
+            Any,
+            Custom
+        }
 	}
 }
